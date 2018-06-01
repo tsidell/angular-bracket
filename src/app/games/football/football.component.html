@@ -1,0 +1,32 @@
+<div class="football-info" *ngIf="match.matchInfo">
+  <div class="football-champion">{{ match.winner.name }} [Champion]</div>
+  <div class="football-header">
+    <span>
+      {{ match.seedMatches[0]?.winner.name }}
+      {{ match.seedMatches[0]?.winner.name === match.winner.name ? '[v]' : '' }}
+    </span>
+    <span>vs</span>
+    <span>
+      {{ match.seedMatches[1]?.winner.name }}
+      {{ match.seedMatches[1]?.winner.name === match.winner.name ? '[v]' : '' }}
+    </span>
+  </div>
+  <div class="football-item">
+    <span>{{ match.matchInfo.home.score }}</span>
+    <span>Score</span>
+    <span>{{ match.matchInfo.away.score }}</span>
+  </div>
+  <div class="football-item">
+    <span>{{ match.matchInfo.home.touchDowns }}</span>
+    <span>Touch downs</span>
+    <span>{{ match.matchInfo.away.touchDowns }}</span>
+  </div>
+  <div class="football-item">
+    <span>{{ match.matchInfo.home.fieldGoals }}</span>
+    <span>Field goals</span>
+    <span>{{ match.matchInfo.away.fieldGoals }}</span>
+  </div>
+  <div class="football-item" *ngIf="match.seedMatches.length">
+    <span *ngFor="let m of match.seedMatches"><sf-football [match]="m"></sf-football></span>
+  </div>
+</div>
